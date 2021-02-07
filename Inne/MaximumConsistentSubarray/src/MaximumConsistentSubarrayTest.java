@@ -44,6 +44,9 @@ class MaximumConsistentSubarrayTest
         currentTime = System.currentTimeMillis();
         assert(MaximumConsistentSubarray.divideAndConquerMaximumConsistentSubarray(testArray).equals(expectedResult));
         System.out.println("Divide and conquer time elapsed: " + (System.currentTimeMillis() - currentTime) + " ms");
+        currentTime = System.currentTimeMillis();
+        assert(MaximumConsistentSubarray.kedanesAlgorithm(testArray).equals(expectedResult));
+        System.out.println("Kedane's algorithm time elapsed: " + (System.currentTimeMillis() - currentTime) + " ms");
     }
 
     @Test

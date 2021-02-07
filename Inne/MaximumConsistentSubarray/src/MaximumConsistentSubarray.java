@@ -73,6 +73,29 @@ public class MaximumConsistentSubarray
         return new Subarray(leftIndex,rightIndex,leftSum + rightSum);
     }
 
+    //Saved the best for last - modified kedane's algorithm can solve this problem in linear time(time complexity O(n))
+    public static Subarray kedanesAlgorithm(int[] array) {
+        long currentSum = array[0];
+        long maximumSum = array[0];
+        int startingIndex = 0;
+        int endingIndex = 0;
+
+        for(int i = 0; i < array.length; i++) {
+            currentSum = Math.max(array[i],currentSum + array[i]);
+            maximumSum = Math.max(maximumSum,currentSum);
+
+            if(maximumSum == array[i]) {
+                startingIndex = i;
+                endingIndex = i;
+            }
+            else if(maximumSum == currentSum) {
+                endingIndex++;
+            }
+        }
+
+        return new Subarray(startingIndex,endingIndex,maximumSum);
+    }
+
 
     static class Subarray {
         private int startingIndex;
