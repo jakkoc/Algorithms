@@ -15,16 +15,21 @@ public class PositionalStatisticsTest {
 
         assertEquals(Arrays.stream(testArray).min(Integer::compare).get(), PositionalStatistics.positionalStatistic(testArray, 1));
         assertEquals(Arrays.stream(testArray).max(Integer::compare).get(), PositionalStatistics.positionalStatistic(testArray, 1000));
+        assertEquals(Arrays.stream(testArray).min(Integer::compare).get(), PositionalStatistics.nthSmallest(testArray, 1));
+        assertEquals(Arrays.stream(testArray).max(Integer::compare).get(), PositionalStatistics.nthSmallest(testArray, 1000));
 
         Integer[] sortedArray = new Integer[1000];
+        Integer[] otherSortedArray = new Integer[1000];
 
         for(int i = 0; i < 1000; i++) {
             sortedArray[i] = PositionalStatistics.positionalStatistic(testArray, i + 1);
+            otherSortedArray[i] = PositionalStatistics.nthSmallest(testArray, i + 1);
         }
 
         Arrays.sort(comparisonArray);
 
         assertArrayEquals(comparisonArray, sortedArray);
+        assertArrayEquals(comparisonArray, otherSortedArray);
     }
 
     @Test
@@ -34,16 +39,21 @@ public class PositionalStatisticsTest {
 
         assertEquals(Arrays.stream(testArray).min(Integer::compare).get(), PositionalStatistics.positionalStatistic(testArray, 1));
         assertEquals(Arrays.stream(testArray).max(Integer::compare).get(), PositionalStatistics.positionalStatistic(testArray, 10000));
+        assertEquals(Arrays.stream(testArray).min(Integer::compare).get(), PositionalStatistics.nthSmallest(testArray, 1));
+        assertEquals(Arrays.stream(testArray).max(Integer::compare).get(), PositionalStatistics.nthSmallest(testArray, 10000));
 
         Integer[] sortedArray = new Integer[10000];
+        Integer[] otherSortedArray = new Integer[10000];
 
         for(int i = 0; i < 10000; i++) {
             sortedArray[i] = PositionalStatistics.positionalStatistic(testArray, i + 1);
+            otherSortedArray[i] = PositionalStatistics.nthSmallest(testArray, i + 1);
         }
 
         Arrays.sort(comparisonArray);
 
         assertArrayEquals(comparisonArray, sortedArray);
+        assertArrayEquals(comparisonArray, otherSortedArray);
     }
 
     @Test
@@ -59,16 +69,21 @@ public class PositionalStatisticsTest {
 
         assertEquals(Arrays.stream(testArray).min(Integer::compare).get(), PositionalStatistics.positionalStatistic(testArray, 1));
         assertEquals(Arrays.stream(testArray).max(Integer::compare).get(), PositionalStatistics.positionalStatistic(testArray, 1000));
+        assertEquals(Arrays.stream(testArray).min(Integer::compare).get(), PositionalStatistics.nthSmallest(testArray, 1));
+        assertEquals(Arrays.stream(testArray).max(Integer::compare).get(), PositionalStatistics.nthSmallest(testArray, 1000));
 
         Integer[] sortedArray = new Integer[1000];
+        Integer[] otherSortedArray = new Integer[1000];
 
         for(int i = 0; i < 1000; i++) {
             sortedArray[i] = PositionalStatistics.positionalStatistic(testArray, i + 1);
+            otherSortedArray[i] = PositionalStatistics.nthSmallest(testArray, i + 1);
         }
 
         Arrays.sort(comparisonArray);
 
         assertArrayEquals(comparisonArray, sortedArray);
+        assertArrayEquals(comparisonArray, otherSortedArray);
     }
 
     @Test
@@ -78,16 +93,21 @@ public class PositionalStatisticsTest {
 
         assertEquals(Arrays.stream(testArray).min(CharSequence::compare).get(), PositionalStatistics.positionalStatistic(testArray, 1));
         assertEquals(Arrays.stream(testArray).max(CharSequence::compare).get(), PositionalStatistics.positionalStatistic(testArray, 1000));
+        assertEquals(Arrays.stream(testArray).min(CharSequence::compare).get(), PositionalStatistics.nthSmallest(testArray, 1));
+        assertEquals(Arrays.stream(testArray).max(CharSequence::compare).get(), PositionalStatistics.nthSmallest(testArray, 1000));
 
         String[] sortedArray = new String[1000];
+        String[] otherSortedArray = new String[1000];
 
         for(int i = 0; i < 1000; i++) {
             sortedArray[i] = PositionalStatistics.positionalStatistic(testArray, i + 1);
+            otherSortedArray[i] = PositionalStatistics.nthSmallest(testArray, i + 1);
         }
 
         Arrays.sort(comparisonArray);
 
         assertArrayEquals(comparisonArray, sortedArray);
+        assertArrayEquals(comparisonArray, otherSortedArray);
     }
 
     private static Integer[] generateRandomIntegerArray(int size, int minimum, int maximum) {
